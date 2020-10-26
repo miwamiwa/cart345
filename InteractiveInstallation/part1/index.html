@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+
+    * { margin: 0; }
+    .perspective { perspective: 120vmin; margin: 60vh 50vw; }
+    .camera { transform-style: preserve-3d; position: fixed; transform: translateX(-30vmin) translateY(-30vmin) rotateX(50deg) }
+    .scene { transform-style: preserve-3d; position: fixed; animation: cwrotation 60s linear infinite; width: 60vmin; height: 60vmin; background: #cfc0; }
+    .cube { transform-style: preserve-3d; position: fixed; }
+    .cube .face { border: 1px solid #8888; width: 20vmin; height: 20vmin; position: fixed; background: white; font-size: 4vmin; line-height: 3vmin; padding: 0.2vmin; border-color:white; }
+    .cube .face.top { transform: translateZ(20vmin);  }
+    .cube .face.left { transform: rotateY(90deg) translate(-10vmin) translateZ(-10vmin) scaleX(-1);  }
+    .cube .face.right { transform: rotateY(90deg) translate(-10vmin) translateZ(10vmin) ;  }
+    .cube .face.front { transform: rotateX(90deg) translateY(10vmin) translateZ(-10vmin) scaleX(-1); }
+    .cube .face.back { transform: rotateX(90deg) translateY(10vmin) translateZ(10vmin);  }
+    .cube .face.bottom { }
+    .pyramid { transform-style: preserve-3d; position: fixed; }
+    .pyramid .face { position: fixed; transform-origin: center center; border-left: 10vmin solid transparent; border-right: 10vmin solid transparent; }
+    .pyramid .face.front { transform: translateZ(9vmin) translateY(5vmin) rotateX(-60deg) rotateZ(0deg); border-bottom: 20vmin solid #def; }
+    .pyramid .face.back { transform: translateZ(9vmin) translateY(-5vmin) rotateX(60deg) rotateZ(180deg); border-bottom: 20vmin solid #def; }
+    .pyramid .face.left { transform: translateZ(9vmin) translateX(-5vmin) rotateY(-60deg) rotateZ(90deg); border-bottom: 20vmin solid #ffb; }
+    .pyramid .face.right { transform: translateZ(9vmin) translateX(5vmin) rotateY(60deg) rotateZ(-90deg); border-bottom: 20vmin solid #ffb; }
+    .pyramid .face.bottom { }
+    .sprite { transform-style: preserve-3d; position: fixed; width: 20vmin; height: 20vmin; animation: cwrotation 60s linear infinite reverse; }
+    .sprite .face { position: fixed; background: #fdda; width: 20vmin; height: 20vmin; border-radius: 50%; border: 1px solid #8888; }
+    .sprite .face.front { transform: translateZ(20vmin); }
+    @keyframes cwrotation { 100% { transform: rotateZ(1turn); } }
+
+    </style>
+
+    <script src='script.js'></script>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+
+
+<div class="perspective">
+  <div class="camera">
+    <div class="scene">
+
+    </div>
+  </div>
+</div>
