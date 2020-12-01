@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+    body{font-family: 'Roboto Slab', serif; overflow-x:hidden; overflow-y:hidden; width:800px;}
+    .perspective { z-index:-1; perspective: 1200px; margin-left:300px; margin-top:300px; }
+    .camera { transform-style: preserve-3d; position: fixed; transform: translateX(-40px) translateY(600px) translateZ(-50px) rotateX(65deg); }
+    .scene { transform-style: preserve-3d; position: fixed; width: 600px; height: 600px; background: #cfc0; transform: translateZ(500px); }
+    #waterContainer{ z-index:0; }
+    #wordContainer{ z-index:2; }
+    #bgimg{ opacity:1; }
+    #bgimg2{ opacity:1; }
+    #cloudimg{ z-index:20; position:fixed; left:55px; top:55px; width:300px; }
+    #bubbleimg{ position:fixed; left: 360px; top:-80px; transform:rotate(10deg) scale(-0.6,0.6); }
+    #userinputs{ position:fixed; left:20px; top: 560px; width:500px; height:80px;}
+    #instructionHoverable{ cursor:pointer; color:grey; }
+    #instructionContent{ cursor:pointer; }
+    </style>
+
+
+   <script src="js/libraries/rita-full.js"></script>
+    <script src="https://unpkg.com/twitch-js@1.2.5/dist/twitch-js.min.js"></script>
+    <script src="js/rippleEffect.js"></script>
+    <script src="js/divthing.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/twitchStuff.js"></script>
+
+    <title></title>
+  </head>
+  <body>
+<div id='output'>
+
+    <div class="perspective" id='waterContainer'>
+      <div class="camera">
+        <div class="scene" id='waterScene'>
+
+        </div>
+      </div>
+    </div>
+    <img src='assets/bg.png' id='bgimg' >
+    <img src='assets/bg2.png' id='bgimg2' >
+    <div class="perspective" id='wordContainer' >
+      <div class="camera">
+        <div class="scene" id='wordScene'>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<img src='assets/cloud.png' id='cloudimg'>
+<img src='assets/bubble.png' id='bubbleimg' hidden>
+
+<div id='userinputs'>
+
+<div id='connectinput'>
+  <div> connect to a channel on <a target="_blank" href='https://www.twitch.tv/directory/all'>twitch.tv</a> by entering the streamer's name</div>
+    <input type="text" id="forminput" onkeydown='formkeypress()' value="pokimane">
+    <button type="button" onclick='submitform()'>Connect</button>
+</div>
+
+<div id='connectioninfo'></div>
+    <button id='stoplistening' type="button" onclick='stoplistening()' hidden >stop listening</button>
+    <button id='startlistening' type="button" onclick='startlistening()' hidden >start listening</button>
+
+    <button id='starttalking' type="button" onclick='starttalking()' hidden >start talking</button>
+    <button id='stoptalking' type="button" onclick='stoptalking()' hidden >stop talking</button>
+
+    <button id='connectagain' type="button" onclick='connectagain()' hidden >connect elsewhere</button>
+
+    <div id='memorybox' hidden ><span id='wordcount'></span>
+<button type="button" onclick='clearit()'>clear memory</button>
+    </div>
+
+<br>
+<span id='instructionContent' onclick='mouseinstructionsOut()' hidden>connect to a twitch stream and generate text based on input from the chat. Made by Samuel Paré-Chouinard using <a href='https://github.com/twitch-js/twitch-js'>twitch-js</a> and <a href='https://rednoise.org/rita/reference/index.php'>RiTa</a></span>
+<span id='instructionHoverable' onclick='mouseinstructions()'>about</span>
+</div>
+  </body>
+</html>
